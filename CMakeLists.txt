@@ -59,7 +59,7 @@ target_include_directories (RmlSolLua
 		${PROJECT_SOURCE_DIR}/include
 )
 
-target_link_libraries (RmlSolLua RmlCore)
+target_link_libraries (RmlSolLua RmlUi::RmlUi)
 if (SOL2_SINGLE)
 	target_link_libraries (RmlSolLua sol2::sol2::single)
 else ()

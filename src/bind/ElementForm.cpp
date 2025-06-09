@@ -181,17 +181,6 @@ namespace Rml::SolLua
 
 		///////////////////////////
 
-		lua.new_usertype<Rml::ElementFormControlDataSelect>("ElementFormControlDataSelect", sol::no_constructor,
-			sol::meta_function::to_string, pointer_to_string<ElementFormControlDataSelect>("sol.ElementFormControlDataSelect"),
-			// M
-			"SetDataSource", &Rml::ElementFormControlDataSelect::SetDataSource,
-
-			// B
-			sol::base_classes, sol::bases<Rml::ElementFormControlSelect, Rml::ElementFormControl, Rml::Element>()
-		);
-
-		///////////////////////////
-
 		lua.new_usertype<Rml::ElementFormControlTextArea>("ElementFormControlTextArea", sol::no_constructor,
 			sol::meta_function::to_string, pointer_to_string<ElementFormControlTextArea>("sol.ElementFormControlTextArea"),
 			// G+S

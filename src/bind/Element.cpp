@@ -186,7 +186,13 @@ namespace Rml::SolLua
 				s.DispatchEvent(event, parameters2);
 			}
 		);
-		elementUsertype["Focus"] = &Rml::Element::Focus;
+		elementUsertype["Focus"] = sol::overload(
+			&Rml::Element::Focus,
+			[](Rml::Element& e)
+			{
+				e.Focus(false);
+			}
+		);
 		elementUsertype["GetAttribute"] = &functions::getAttribute;
 		elementUsertype["GetElementById"] = &Rml::Element::GetElementById;
 		elementUsertype["GetElementsByTagName"] = &functions::getElementsByTagName;

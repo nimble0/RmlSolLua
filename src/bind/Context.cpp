@@ -155,7 +155,7 @@ namespace Rml::SolLua
 		usertype["ProcessMouseMove"] = &Rml::Context::ProcessMouseMove;
 		usertype["ProcessMouseButtonDown"] = &Rml::Context::ProcessMouseButtonDown;
 		usertype["ProcessMouseButtonUp"] = &Rml::Context::ProcessMouseButtonUp;
-#if RmlUi_VERSION_MAJOR >= 5 && RmlUi_VERSION_MINOR >= 1
+#if RmlUi_VERSION_MAJOR > 5 || (RmlUi_VERSION_MAJOR == 5 && RmlUi_VERSION_MINOR >= 1)
 		usertype["ProcessMouseWheel"] = sol::overload(
 			static_cast<bool(Rml::Context::*)(float, int)>(&Rml::Context::ProcessMouseWheel),
 			static_cast<bool(Rml::Context::*)(Vector2f, int)>(&Rml::Context::ProcessMouseWheel)
@@ -181,8 +181,6 @@ namespace Rml::SolLua
 		// G+S
 		usertype["dimensions"] = sol::property(&Rml::Context::GetDimensions, &Rml::Context::SetDimensions);
 		usertype["dp_ratio"] = sol::property(&Rml::Context::GetDensityIndependentPixelRatio, &Rml::Context::SetDensityIndependentPixelRatio);
-		//--
-		usertype["clip_region"] = sol::property(&Rml::Context::GetActiveClipRegion, &Rml::Context::SetActiveClipRegion);
 
 		// G
 		usertype["documents"] = sol::readonly_property(&getIndexedTable<SolLuaDocument, Rml::Context, &document::getDocument, &Rml::Context::GetNumDocuments>);
